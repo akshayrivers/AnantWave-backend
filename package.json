@@ -1,19 +1,25 @@
 {
   "name": "anantwave",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "type": "module",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.0",
+    "@auth/express": "^0.11.0",
+    "@auth/pg-adapter": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "mongoose": "^8.16.4",
-    "zod": "^4.0.5"
+    "mysql2": "^3.14.3",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.2.0",
+    "@types/pg": "^8.15.5"
+  },
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc -b",
+    "start": "node dist/index.js"
   }
 }
