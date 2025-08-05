@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { authRoute } from "./routes/auth.route.js";
 import { registerRoute } from "./routes/auth.route.js";
 import { authSession } from "./middleware/session.js";
+import { requireRole } from "./middleware/requireRole.js";
 
 dotenv.config();
 
@@ -26,6 +27,9 @@ app.use("/api", registerRoute);
 
 // Test route
 app.get("/", (req, res) => {
+    res.send("Hello from Express + Auth.js + PostgreSQL!");
+});
+app.get("/hmm", requireRole("admin"), (_req: any, res: { send: (arg0: string) => void; }) => {
     res.send("Hello from Express + Auth.js + PostgreSQL!");
 });
 
