@@ -16,6 +16,15 @@ if (!AUTH_SECRET) throw new Error("Missing AUTH_SECRET");
 if (!GITHUB_ID || !GITHUB_SECRET) throw new Error("Missing GitHub OAuth credentials");
 if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) throw new Error("Missing GitHub OAuth credentials");
 
+interface Session {
+    user: {
+        id: number;
+        name?: string;
+        email?: string;
+        image?: string;
+        role: "admin" | "user";
+    };
+}
 const authConfig = {
     trustHost: true,
     secret: AUTH_SECRET!,
@@ -107,6 +116,14 @@ const authConfig = {
         }),
 
     ],
+    callbacks: {
+        session: async ({ session, user }) => {
+            // ✅ Add id and role to session.user
+            session.user.id = user.id;
+            session.user.role = user.role;
+            return session;
+        },
+    },
 };
 
 // 🧠 2. Export both separately

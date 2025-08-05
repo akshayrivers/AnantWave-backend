@@ -30,9 +30,11 @@ app.get("/", (req, res) => {
     res.send("Hello from Express + Auth.js + PostgreSQL!");
 });
 app.get("/hmm", requireRole("admin"), (_req: any, res: { send: (arg0: string) => void; }) => {
-    res.send("Hello from Express + Auth.js + PostgreSQL!");
+    res.send("Admin route");
 });
-
+app.get("/hmm", requireRole("user"), (_req: any, res: { send: (arg0: string) => void; }) => {
+    res.send("User route");
+});
 app.listen(PORT, () => {
     console.log(`🚀 Server is running at http://localhost:${PORT}`);
 });
