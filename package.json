@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "@auth/core": "^0.40.0",
     "@auth/express": "^0.11.0",
     "@auth/pg-adapter": "^1.10.0",
     "bcrypt": "^6.0.0",
